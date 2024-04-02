@@ -1,7 +1,5 @@
 # Banking Application REST API using Spring Boot
 <p>Created for self learning by Justinas Lukšas.</p>
-
-# Banking Application REST API using Spring Boot
 Banking Application REST API using Spring Boot and Spring Data JPA
 
 ## Description:
