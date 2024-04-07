@@ -19,6 +19,10 @@ Banking Application REST API using Spring Boot and Spring Data JPA
 <li>Maven 4.0.0</li>
 <li>Jackson Dataformat XML 2.17.0</li>
 
+## Features:
+Record class DTOs
+Role-based access control (RBAC).
+
 
 <h2>Getting Started</h2>
 prerequisites - local mysql database with the name banking_app

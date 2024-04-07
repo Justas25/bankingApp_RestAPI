@@ -35,7 +35,7 @@ public class PersonController {
             return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("person", newPerson));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Error creating a Person " + e.getMessage()));
+                    .body(Map.of("error", "Error creating a Person: " + e.getMessage()));
         }
 
     }
@@ -54,7 +54,7 @@ public class PersonController {
             return ResponseEntity.ok().body(Map.of("data",personService.getPersons()));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Error getting Person list " + e.getMessage()));
+                    .body(Map.of("error", "Error getting Person list: " + e.getMessage()));
 
         }
 
@@ -89,7 +89,8 @@ public class PersonController {
     }
 
     /**
-     * Delete a person by ID.
+     * Delete a person by ID.Person cannot be deleted because persons account also cannot be deleted, only suspended.
+     * Only persons user is deleted.
      *
      * @param id The ID of the person to be deleted.
      * @return ResponseEntity indicating the success of the delete operation.
@@ -98,7 +99,7 @@ public class PersonController {
     public ResponseEntity<?> deletePerson(@PathVariable String id) {
         try {
             personService.deletePerson(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("Person cannot be deleted, only Persons user has been deleted " , HttpStatus.OK);
         }  catch (NoSuchElementException e) {
             return new ResponseEntity<>("Person not found: "+e.getMessage(), HttpStatus.NOT_FOUND);
         }
