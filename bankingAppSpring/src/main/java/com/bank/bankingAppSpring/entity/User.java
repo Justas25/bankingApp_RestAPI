@@ -33,6 +33,13 @@ public class User implements UserDetails {
         this.person = person;
     }
 
+    public User(String username, String password, Person person, Role role) {
+        this.username = username;
+        this.password = password;
+        this.person = person;
+        this.role = role;
+    }
+
     public Long getId() {
         return id;
     }

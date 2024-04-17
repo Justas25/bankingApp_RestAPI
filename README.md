@@ -1,10 +1,11 @@
 # Banking Application REST API using Spring Boot
 <p>Created for self learning by Justinas Lukšas.</p>
-Banking Application REST API using Spring Boot and Spring Data JPA
+Banking Application REST API using Spring Boot, Spring Data JPA and Spring Security
 
 ## Description:
 - Developed a REST API to create bank account and perform all banking operations
 - Integrated data and performed CRUD operations using Spring Data JPA; stored data in MySql database.
+- Spring Security with role based access control.
 
 ## Tech Stack:
 
@@ -16,7 +17,6 @@ Banking Application REST API using Spring Boot and Spring Data JPA
 <li>JJWT 0.11.5</li>
 <li>mySQL 8.3.0</li>
 <li>Maven 4.0.0</li>
-<li>Jackson Dataformat XML 2.17.0</li>
 
 ## Features:
 Record class DTOs
