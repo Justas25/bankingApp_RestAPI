@@ -1,23 +1,30 @@
 package com.bank.bankingAppSpring.service;
 
 import com.bank.bankingAppSpring.dto.PersonDTO;
+import com.bank.bankingAppSpring.dto.UserDTO;
 import com.bank.bankingAppSpring.entity.Person;
+import com.bank.bankingAppSpring.entity.Role;
 import com.bank.bankingAppSpring.entity.User;
 import com.bank.bankingAppSpring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void createUser(PersonDTO personDTO, Person person){
@@ -26,7 +33,9 @@ public class UserService {
             if (existingUser.isPresent()) {
                 throw new IllegalArgumentException("A user with ID " + existingUser.get().getId() + " already exists.");
             } else {
-                User user = new User(personDTO.username(), personDTO.password(), person);
+                String encryptedPassword = passwordEncoder.encode(personDTO.password());
+
+                User user = new User(personDTO.username(), encryptedPassword, person, Role.USER);
                 userRepository.save(user);
             }
         }
@@ -67,6 +76,8 @@ public class UserService {
         }
 
     }
+
+
 
 
 
