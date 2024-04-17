@@ -7,6 +7,7 @@ Banking Application REST API using Spring Boot, Spring Data JPA and Spring Secur
 - Integrated data and performed CRUD operations using Spring Data JPA; stored data in MySql database.
 - Spring Security with role based access control.
 
+
 ## Tech Stack:
 
 <li>Java 17</li>
